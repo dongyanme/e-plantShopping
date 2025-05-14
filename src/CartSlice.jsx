@@ -15,9 +15,24 @@ export const CartSlice = createSlice({
         state.items.push({ name, image, cost, quantity: 1 });
       }
     },
+
     removeItem: (state, action) => {
-      state.items = state.items.filter(item => item.name !== action.payload);
+      const { name, quantity } = action.payload;
+      state.items = state.items.filter(item => item.name !== name);
+      // state.items = state.items.filter(item => item.name !== action.payload.name);
     },
+    
+  //   removeItem: (state, action) => {
+  //     const { name, quantity } = action.payload;
+  //     state.items = state.items.filter(item => item.name !== name);
+  //     state.numOfItems -= quantity;
+
+  //     // Just to be sure... I hate negative numbers
+  //     if (state.numOfItems < 0) {
+  //         state.numOfItems = 0;
+  //     }
+  // },
+
     updateQuantity: (state, action) => {
       const { name, quantity } = action.payload;
       const itemToUpdate = state.items.find(item => item.name === name);
