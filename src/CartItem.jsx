@@ -13,8 +13,10 @@ const CartItem = ({ onContinueShopping }) => {
     cart.forEach((item) => {
       const quantity = item.quantity;
       const cost = parseFloat(item.cost.substring(1));
+      console.log("cost=" + cost);
       totalAmount += quantity * cost;
     });
+    return totalAmount;
   };
 
   const handleContinueShopping = (e) => {
@@ -30,24 +32,16 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleDecrement = (item) => {
-    if(item.quantity > 0){
-      dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
+    console.log("before item.quantity=" + item.quantity);
+    const updatedItem = { ...item };
+    updatedItem.quantity--;
+    if(updatedItem.quantity > 0){
+      dispatch(updateQuantity(updatedItem));
+      console.log("after item.quantity=" + updatedItem.quantity);
     } else {
-      dispatch(removeItem(item));
+      dispatch(removeItem(updatedItem));
     }
   };
-
-//   const handleDecrement = (item) => {
-//     const updatedItem = { ...item };
-
-//     if (updatedItem.quantity == 1) {
-//         // Remove item if number of items gets decremented to 0
-//         dispatch(removeItem(updatedItem));
-//     } else {
-//         updatedItem.quantity--;
-//         dispatch(updateQuantity(updatedItem));
-//     }
-// };
 
   const handleRemove = (item) => {
     dispatch(removeItem(item));

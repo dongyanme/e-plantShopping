@@ -82,15 +82,12 @@ body {
 }
 
 .category-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-    align-items: center;
-    text-align: center;  /* text horizontal center */
-    /* border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
-    padding: 10px 0; */
-    /* left: 33%;
-    width: 33%; */
+    width: 400px;
+    text-align: center;
+    margin: 20px;
+    border: 1px solid rgb(5, 4, 4);
+    border-left: none;
+    border-right: none;
 }
 
 .product-title {
